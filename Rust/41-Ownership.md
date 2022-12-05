@@ -4,8 +4,11 @@
 - Memory is managed through a system of ownership with a set of rules that the compiler checks.
 
 > Both the stack and the heap are parts of memory available to your code to use at runtime, but they are structured in different ways. The stack stores values in the order it gets them and removes the values in the opposite order. This is referred to as _last in, first out_.
+
 > The heap is less organized: when you put data on the heap, you request a certain amount of space. The memory allocator finds an empty spot in the heap that is big enough, marks it as being in use, and returns a _pointer_, which is the address of that location. This process is called _allocating on the heap_ and is sometimes abbreviated as just _allocating_ (pushing values onto the stack is not considered allocating). Because the pointer to the heap is a known, fixed size, you can store the pointer on the stack, but when you want the actual data, you must follow the pointer.
+
 > Pushing to the stack is faster than allocating on the heap because the allocator never has to search for a place to store new data; that location is always at the top of the stack. Comparatively, allocating space on the heap requires more work, because the allocator must first find a big enough space to hold the data and then perform bookkeeping to prepare for the next allocation.
+
 > Accessing data in the heap is slower than accessing data on the stack because you have to follow a pointer to get there.
 
 ## Ownership Rules
@@ -111,10 +114,10 @@ List of types that implement `Copy`:
 - Tuples, if they only contain types that also implement Copy. For example, (i32, i32) implements Copy, but (i32, String) does not.
 
 ## Ownership and Functions
-![[u43.png]]
+![u43.png](https://github.com/Shogunkayo/Programming-Languages/blob/main/Rust/Images/u43.png)
 
 ### Returning values
-![[u44.png]]
+![u44.png](https://github.com/Shogunkayo/Programming-Languages/blob/main/Rust/Images/u44.png)
 
 - In case we want to return another value along with the ownership, we can use a tuple
 ```
